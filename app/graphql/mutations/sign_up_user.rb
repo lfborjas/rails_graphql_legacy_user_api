@@ -11,8 +11,10 @@ class Mutations::SignUpUser < GraphQL::Function
     User.create_remote(
       email: args.email,
       password: args.password,
-      first_name: args.first_name,
-      last_name: args.last_name
+      firstname: args.first_name,
+      lastname: args.last_name,
+      confirmation: args.password,
+      email_optin: '0'
     )
   end
 end
