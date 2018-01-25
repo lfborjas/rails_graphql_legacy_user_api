@@ -1,4 +1,5 @@
 GraphqlRailsUserApiSchema = GraphQL::Schema.define do
-  mutation(Types::MutationType)
+  # we're not using mutations for this prototype
+  #mutation(Types::MutationType)
   query(Types::QueryType)
 end
