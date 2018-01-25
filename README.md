@@ -33,3 +33,10 @@ Loading development environment (Rails 5.1.4)
 
 If anything explodes, it's likely your db config is wonky (faulty tunnel, creds don't match what's in config/database.yml, MAGE_RW_PASSWORD not set, etc).
 
+### Generating models
+
+for this little project, we're not doing migrations (working with an existing legacy db) nor fixtures; so I've been using this command to at least put the right files in the right place (note that `rails` is now in `bin`):
+
+```bash
+bin/rails g model User --no-migration --no-fixture
+```
