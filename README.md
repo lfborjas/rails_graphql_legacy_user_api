@@ -7,7 +7,7 @@
 
 * System dependencies: before bundling, make sure you have xcode command line tools installed (`xcode-select install` will get you there)
 
-* Configuration: in development you need to provide an environment variable called MAGE_RW_PASSWORD (export it in a terminal session or put it in some *rc file) with the password for your dev box's legacy database. 
+* Configuration: in development you need to provide an environment variable called MAGE_RW_PASSWORD (export it in a terminal session or put it in some *rc file) with the password for your dev box's legacy database. If you want to test out mutations, also set the `MAGE_URI` environment variable to be able to talk directly to the legacy api.
 
 * Database initialization: the default database.yml assumes you're tunneling back to your dev box's copy of the legacy database on port 3316; if you set up your tunnels in your ssh config (instead of running ad-hoc) you need to have a session open (ssh to your dev box on another terminal tab).
 
