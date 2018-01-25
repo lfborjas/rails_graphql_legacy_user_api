@@ -40,3 +40,13 @@ for this little project, we're not doing migrations (working with an existing le
 ```bash
 bin/rails g model User --no-migration --no-fixture
 ```
+
+### Graphql interactive app
+
+Since this project is API-only, you can't quite use the de-facto gem (https://github.com/rmosolgo/graphql-ruby) that would serve from the rails server. However, you _can_ use a standalone node app based on electron (https://github.com/skevy/graphiql-app). If you're on Mac and have node installed, it should be as easy as:
+
+```
+brew cask install graphiql
+```
+
+And then you only need to open GraphiQL.app and then point to your rails server's graphql root (by default: http://localhost:3000/graphql)

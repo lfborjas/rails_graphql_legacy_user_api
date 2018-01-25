@@ -5,8 +5,9 @@ Types::QueryType = GraphQL::ObjectType.define do
 
   field :user, !types[Types::UserType] do
     description "Get information about a customer"
+    argument :id, types.Int
     resolve ->(obj, args, ctx) {
-      User.where(args)
+      User.where(entity_id: args[:id])
     }
   end
 end
