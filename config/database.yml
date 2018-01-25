@@ -13,13 +13,14 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  username: mage_rw
+  password: <%= ENV.fetch("MAGE_RW_PASSWORD") %>
+  host: 127.0.0.1
+  port: 3316
 
 development:
   <<: *default
-  database: graphql_rails_user_api_development
+  database: magento_birchbox
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

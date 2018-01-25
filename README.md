@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Development
 
-Things you may want to cover:
+### Prerrequisites: 
+* Ruby version: 2.2.2.
 
-* Ruby version
+* System dependencies: before bundling, make sure you have xcode command line tools installed (`xcode-select install` will get you there)
 
-* System dependencies
+* Configuration: in development you need to provide an environment variable called MAGE_RW_PASSWORD (export it in a terminal session or put it in some *rc file) with the password for your dev box's legacy database. 
 
-* Configuration
+* Database initialization: the default database.yml assumes you're tunneling back to your dev box's copy of the legacy database on port 3316; if you set up your tunnels in your ssh config (instead of running ad-hoc) you need to have a session open (ssh to your dev box on another terminal tab).
 
-* Database creation
+### Install dependencies
 
-* Database initialization
+```
+bundle install
+```
 
-* How to run the test suite
+### Check your db connection
 
-* Services (job queues, cache servers, search engines, etc.)
+An easy way to check that your db config is correct (which, after nokogiri's native deps, is the next big headache here), you can jump on a rails console and run a test query, should look like this:
 
-* Deployment instructions
+```bash
+λ ~/graphql_rails_user_api/ master* bin/rails console
+Running via Spring preloader in process 93742
+Loading development environment (Rails 5.1.4)
+ :001 > ActiveRecord::Base.connection.exec_query("select * from customer_entity limit 1;")
+  SQL (14.5ms)  select * from customer_entity limit 1;
+ => #<ActiveRecord::Result:0x007f8391576d10 @columns=["entity_id", "entity_type_id", "attribute_set_id", "website_id", "email", "group_id", "increment_id", "store_id", "created_at", "updated_at", "is_active"], @rows=[[3, 1, 0, 1, "3@3.net", 7, "", 1, 2010-08-23 22:04:48 UTC, 2010-12-21 18:00:09 UTC, 1]], @hash_rows=nil, @column_types={}> 
+ :007 > 
+```
 
-* ...
+If anything explodes, it's likely your db config is wonky (faulty tunnel, creds don't match what's in config/database.yml, MAGE_RW_PASSWORD not set, etc).
+
