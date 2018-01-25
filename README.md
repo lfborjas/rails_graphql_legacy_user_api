@@ -53,8 +53,8 @@ brew cask install graphiql
 
 And then you only need to open GraphiQL.app and then point to your rails server's graphql root (by default: http://localhost:3000/graphql):
 
-![example interaction](screenshot.png?raw=true "Example Query with GraphQL.app")
-
+![example query](screenshot.png?raw=true "Example Query with GraphQL.app")
+![example mutation](mutation.png?raw=true "Example Mutation with GraphQL.app")
 
 ## References
 
