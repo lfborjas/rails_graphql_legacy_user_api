@@ -43,10 +43,23 @@ bin/rails g model User --no-migration --no-fixture
 
 ### Graphql interactive app
 
-Since this project is API-only, you can't quite use the de-facto gem (https://github.com/rmosolgo/graphql-ruby) that would serve from the rails server. However, you _can_ use a standalone node app based on electron (https://github.com/skevy/graphiql-app). If you're on Mac and have node installed, it should be as easy as:
+Since this project is API-only, you can't quite use the de-facto gem (https://github.com/rmosolgo/graphql-ruby) that would serve from the rails server; because the assets middleware is skipped (see [these](https://github.com/rmosolgo/graphql-ruby/issues/768) [issues](https://github.com/rmosolgo/graphiql-rails/issues/13)).
+
+However, you _can_ use a standalone node app based on electron (https://github.com/skevy/graphiql-app), which I prefer since you can have it on your laptop and just point it at a dev box vs. being beholden to the same server as the actual API. If you're on Mac and have node installed, it should be as easy as:
 
 ```
 brew cask install graphiql
 ```
 
 And then you only need to open GraphiQL.app and then point to your rails server's graphql root (by default: http://localhost:3000/graphql)
+
+## References
+
+Followed these tutorials loosely:
+
+* https://blog.codeship.com/how-to-implement-a-graphql-api-in-rails/
+* https://medium.com/@DrawandCode/building-a-graphql-api-in-rails-part-start-coding-8b1de6d75041
+
+But the graphql documentation was incredible: http://graphql-ruby.org/types/introduction.html (+ the autodocs: http://www.rubydoc.info/gems/graphql/1.7.8/GraphQL/ObjectType).
+
+The schema is simple and made to match the same [proof of concept, in node](https://github.com/lfborjas/node_graphql_legacy_user_api).
